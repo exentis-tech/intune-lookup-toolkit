@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intune Lookup Toolkit</title>
+  <meta name="description" content="Bulk lookups for Intune and Entra ID: device IDs, object IDs, serials, primary users, user locations and group members — copy-ready.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f5fae'/%3E%3Ccircle cx='14' cy='14' r='6' stroke='white' stroke-width='2.6' fill='none'/%3E%3Cpath d='M18.5 18.5 24 24' stroke='white' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><rect width="32" height="32" rx="7"/><circle cx="14" cy="14" r="6"/><path d="M18.5 18.5 24 24"/></svg>
+      </span>
+      <div>
+        <strong>Intune Lookup Toolkit</strong>
+        <span class="muted">Devices, users and groups in bulk — copy-ready</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="badge" id="roBadge" hidden title="This tool only reads from Microsoft Graph">Read-only</span>
+      <div class="who" id="who"></div>
+    </div>
+  </header>
+  <div class="demo-banner" id="banner" hidden></div>
+
+  <main>
+    <section class="start" id="start" hidden>
+      <div class="start-card">
+        <h1>Start the local server</h1>
+        <p class="muted" id="startError"></p>
+        <p>This page talks to your tenant through <code>server.ps1</code>, which reads your app registration from <code>config.json</code>:</p>
+        <ol>
+          <li>Copy <code>config.example.json</code> to <code>config.json</code> and fill in TenantId, ApplicationId and ClientSecret.</li>
+          <li>Run <code>Start-Lookup.cmd</code> (or <code>pwsh ./server.ps1</code>).</li>
+          <li>The browser opens on <code>http://127.0.0.1:8089/</code>.</li>
+        </ol>
+        <div class="row">
+          <button class="btn primary" type="button" id="demoBtn">Try the demo tenant</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="workspace" hidden>
+      <nav class="tabs" role="tablist" id="tabs"></nav>
+      <div id="tools"></div>
+    </section>
+  </main>
+
+  <dialog id="modal" aria-labelledby="modalTitle">
+    <form method="dialog" class="modal" id="modalForm"></form>
+  </dialog>
+  <input type="file" id="fileInput" accept=".csv,.txt,text/csv,text/plain" hidden>
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <footer class="foot">Read-only · Microsoft Graph v1.0 · Results stay in this browser tab</footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

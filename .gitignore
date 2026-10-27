@@ -1,0 +1,8 @@
+# Secrets and exports - never commit these
+config.json
+*.config.json
+*.csv
+!tests/**/*.csv
+node_modules/
+.DS_Store
+*.log

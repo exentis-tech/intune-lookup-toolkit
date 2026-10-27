@@ -1,0 +1,11 @@
+{
+  "name": "intune-lookup-toolkit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/lookups.test.js",
+    "test:server": "node --test --test-concurrency=1 tests/server.test.js"
+  }
+}
